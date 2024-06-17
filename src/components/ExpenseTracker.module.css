@@ -1,0 +1,18 @@
+.container {
+  background: rgba(59, 59, 59, 1);
+  border: 1px solid rgba(155, 155, 155, 1);
+  box-shadow: 3px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 100vw;
+  height: 100vh;
+  border-radius: 3px;
+}
+.title {
+  font-family: Ubuntu;
+  font-size: 16px;
+  font-size: rem;
+  font-weight: 700;
+  line-height: 36.77px;
+  text-align: left;
+  color: white;
+  padding: 1rem;
+}

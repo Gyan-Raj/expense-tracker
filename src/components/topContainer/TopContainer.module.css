@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 290px;
+}
+.subContainer {
+  width: 95%;
+  /* height: 34.5vh; */
+  height: 92.5%;
+  border-radius: 10px;
+  background: rgba(98, 98, 98, 1);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* padding: 1rem 0; */
+}
