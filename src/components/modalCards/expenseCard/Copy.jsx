@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import style from "./ExpenseCard.module.css";
 import Button from "../../button/Button";
 import Input from "../../input/Input";
@@ -7,6 +7,10 @@ const ExpenseCard = ({
   handleCloseExpenseModal,
   text,
   handleAddExpense,
+  // title,
+  // price,
+  // category,
+  // date,
   expenseDetail,
   setExpenseDetail,
 }) => {
@@ -18,8 +22,15 @@ const ExpenseCard = ({
       [name]: value,
     }));
   };
-  let handleSubmit = (e) => {
+  /**
+   * here, e is required
+   * let handleSubmit = (e) => {
     e.preventDefault();
+    handleAddExpense();
+  };
+   */
+  let handleSubmit = () => {
+    // e.preventDefault();
     handleAddExpense();
   };
   return (
@@ -43,12 +54,33 @@ const ExpenseCard = ({
                     />
                   </td>
                   <td className={style.td}>
+                    {/**
+                     * name and value should be same, i.e.,
+                    either:
+                        <Input
+                        type="text"
+                        placeholder="Price"
+                        name="addExpense"
+                        value={expenseDetail.addExpense}
+                        onChange={handleAddExpense}
+
+                      or:
+                        we should have "price" attribute (instead of "addExpense") in expenseDetail list which is passed from parent (ExpenseTracker.jsx), and then we can use
+                        <Input
+                        type="text"
+                        placeholder="Price"
+                        name="price"
+                        value={expenseDetail.price}
+                        onChange={handleAddExpense}
+                    />
+                    />
+                     */}
                     <Input
                       type="text"
                       placeholder="Price"
-                      name="addExpense"
-                      value={expenseDetail.addExpense}
-                      onChange={handleChange}
+                      name="price"
+                      value={expenseDetail.price}
+                      onChange={handleAddExpense}
                     />
                   </td>
                 </tr>
@@ -81,7 +113,7 @@ const ExpenseCard = ({
                 <tr className={style.tr}>
                   <td className={style.td}>
                     <Button
-                      type="submit"
+                      type="button"
                       children="Add Expense"
                       style="addButtonYellow"
                     />

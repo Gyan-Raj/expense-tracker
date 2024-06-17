@@ -6,37 +6,23 @@ import Input from "../../input/Input";
 // import { expenseTrackerContextProvider } from "../context/ContextProvider";
 // import Button from "../buttons/Button";
 
-const AddBalanceCard = ({ handleCloseBalanceModal }) => {
-  //   let { state, funcAddBalance } = useContext(expenseTrackerContextProvider);
-  let [addBalance, setAddBalance] = useState({
-    income: 0,
-  });
-  let { income } = addBalance;
-  //   let handleChange = (e) => {
-  //     let { name, value } = e.target;
-  //     setAddBalance((prevState) => {
-  //       return { ...prevState, [name]: value };
-  //     });
-  //   };
+const AddBalanceCard = ({
+  handleCloseBalanceModal,
+  addBalance,
+  handleAddBalance,
+  setAddBalance,
+}) => {
+  // let [income, setIncome] = useState("");
 
-  //   let handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     funcAddBalance(addBalance.income);
-  //     setAddBalance({ income: 0 });
-  //     // console.log(addBalance);
-  //     // console.log(state);
-  //   };
-  //   let handleCancel = (e) => {
-  //     setAddBalance({ income: 0 });
-  //   };
-
-  const handleSubmit = () => {};
-  const handleChange = () => {};
+  const handleChange = (e) => {
+    let { value } = e.target;
+    setAddBalance(value);
+  };
 
   return (
     <div className={style.container}>
       <div className={style.subContainer}>
-        <form action="" onSubmit={handleSubmit}>
+        <form action="" onSubmit={handleAddBalance}>
           <div className={style.topContainer}>
             <h1>Add Balance</h1>
           </div>
@@ -47,14 +33,14 @@ const AddBalanceCard = ({ handleCloseBalanceModal }) => {
                   type="text"
                   placeholder="Income Amount"
                   name="income"
-                  value={income}
+                  value={addBalance}
                   onChange={handleChange}
                 />
               </div>
               <div className={style.addButtonDiv}>
                 <Button
-                  type="button"
-                  onClick={handleSubmit}
+                  type="submit"
+                  // onClick={handleSubmit}
                   children="Add Balance"
                   style="addButtonYellow"
                 />

@@ -19,7 +19,9 @@ const ExpenseTracker = () => {
     category: "",
     date: "",
   });
-  const [expenseDetailList, setExpenseDetailList] = useState([]);
+  // const [expenseDetailList, setExpenseDetailList] = useState([]);
+
+  // let { title, addExpense, category, date } = expenseDetail;
 
   let handleOpenBalanceModal = () => {
     setIsBalanceOpen(true);
@@ -37,27 +39,29 @@ const ExpenseTracker = () => {
     e.preventDefault();
     setWalletBalance(Number(walletBalance) + Number(addBalance));
   };
-  let handleAddExpense = () => {
-    // let { name, value } = e.target;
-    let amount = Number(expenseDetail.addExpense);
-    if (walletBalance >= amount) {
-      setWalletBalance(walletBalance - amount);
-      setTotalExpense(totalExpense + amount);
-
-      // setExpenseDetailList(expenseDetail);
-      setExpenseDetail({
-        title: "",
-        addExpense: "",
-        category: "",
-        date: "",
-      });
-      console.log(expenseDetail);
-      setExpenseDetailList([...expenseDetailList, { expenseDetail }]);
-      // console.log(expenseDetailList);
-      setIsExpenseOpen(false);
-    } else {
-      alert("Insufficient balance");
-    }
+  /**
+   * e is removed
+   */
+  let handleAddExpense = (e) => {
+    e.preventDefault();
+    let { name, value } = e.target;
+    // if (Number(walletBalance) >= Number(addExpense)) {
+    setWalletBalance(Number(walletBalance) - Number(addExpense));
+    setTotalExpense(Number(totalExpense) + Number(addExpense));
+    // setExpenseDetail(expenseDetail, { [name]: value });
+    setExpenseDetailList(expenseDetail);
+    setExpenseDetail({
+      title: "",
+      price: "",
+      category: "",
+      date: "",
+    });
+    console.log(expenseDetail);
+    console.log(expenseDetailList);
+    setIsExpenseOpen(false);
+    // } else {
+    //   alert("Insufficient balance");
+    // }
   };
   return (
     <div className={style.container}>
@@ -75,10 +79,7 @@ const ExpenseTracker = () => {
         />
       </div>
       <div>
-        <BottomContainer
-          expenseDetailList={expenseDetailList}
-          setExpenseDetailList={setExpenseDetailList}
-        />
+        <BottomContainer />
       </div>
       <Modal isOpen={isBalanceOpen} setIsOpen={setIsBalanceOpen}>
         <AddBalanceCard

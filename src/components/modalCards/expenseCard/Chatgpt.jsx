@@ -10,22 +10,23 @@ const ExpenseCard = ({
   expenseDetail,
   setExpenseDetail,
 }) => {
-  let handleChange = (e) => {
-    let { name, value } = e.target;
-    console.log(name, value);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
     setExpenseDetail((prevDetail) => ({
       ...prevDetail,
       [name]: value,
     }));
   };
-  let handleSubmit = (e) => {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     handleAddExpense();
   };
+
   return (
     <div className={style.container}>
       <div className={style.subContainer}>
-        <form action="" className={style.form} onSubmit={handleSubmit}>
+        <form className={style.form} onSubmit={handleSubmit}>
           <div className={style.topContainer}>
             <h1>{text}</h1>
           </div>
@@ -46,8 +47,8 @@ const ExpenseCard = ({
                     <Input
                       type="text"
                       placeholder="Price"
-                      name="addExpense"
-                      value={expenseDetail.addExpense}
+                      name="price"
+                      value={expenseDetail.price}
                       onChange={handleChange}
                     />
                   </td>

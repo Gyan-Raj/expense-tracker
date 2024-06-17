@@ -15,50 +15,51 @@ const ExpenseTracker = () => {
   const [addBalance, setAddBalance] = useState("");
   const [expenseDetail, setExpenseDetail] = useState({
     title: "",
-    addExpense: "",
+    price: "",
     category: "",
     date: "",
   });
-  const [expenseDetailList, setExpenseDetailList] = useState([]);
 
-  let handleOpenBalanceModal = () => {
+  const handleOpenBalanceModal = () => {
     setIsBalanceOpen(true);
   };
-  let handleCloseBalanceModal = () => {
+
+  const handleCloseBalanceModal = () => {
     setIsBalanceOpen(false);
   };
-  let handleOpenExpenseModal = () => {
+
+  const handleOpenExpenseModal = () => {
     setIsExpenseOpen(true);
   };
-  let handleCloseExpenseModal = () => {
+
+  const handleCloseExpenseModal = () => {
     setIsExpenseOpen(false);
   };
-  let handleAddBalance = (e) => {
+
+  const handleAddBalance = (e) => {
     e.preventDefault();
     setWalletBalance(Number(walletBalance) + Number(addBalance));
+    setAddBalance(""); // Clear the input field after adding the balance
   };
-  let handleAddExpense = () => {
-    // let { name, value } = e.target;
-    let amount = Number(expenseDetail.addExpense);
-    if (walletBalance >= amount) {
-      setWalletBalance(walletBalance - amount);
-      setTotalExpense(totalExpense + amount);
 
-      // setExpenseDetailList(expenseDetail);
+  const handleAddExpense = () => {
+    const expenseAmount = Number(expenseDetail.price);
+
+    if (walletBalance >= expenseAmount) {
+      setWalletBalance(walletBalance - expenseAmount);
+      setTotalExpense(totalExpense + expenseAmount);
       setExpenseDetail({
         title: "",
-        addExpense: "",
+        price: "",
         category: "",
         date: "",
-      });
-      console.log(expenseDetail);
-      setExpenseDetailList([...expenseDetailList, { expenseDetail }]);
-      // console.log(expenseDetailList);
-      setIsExpenseOpen(false);
+      }); // Clear the input fields after adding the expense
+      setIsExpenseOpen(false); // Close the modal after adding the expense
     } else {
       alert("Insufficient balance");
     }
   };
+
   return (
     <div className={style.container}>
       <div className={style.title}>
@@ -75,10 +76,7 @@ const ExpenseTracker = () => {
         />
       </div>
       <div>
-        <BottomContainer
-          expenseDetailList={expenseDetailList}
-          setExpenseDetailList={setExpenseDetailList}
-        />
+        <BottomContainer />
       </div>
       <Modal isOpen={isBalanceOpen} setIsOpen={setIsBalanceOpen}>
         <AddBalanceCard
@@ -92,14 +90,9 @@ const ExpenseTracker = () => {
         <ExpenseCard
           handleCloseExpenseModal={handleCloseExpenseModal}
           text={isAddExpenseCard ? "Add Expenses" : "Edit Expenses"}
-          // addExpense={addExpense}
-          handleAddExpense={handleAddExpense}
-          // title={title}
-          // price={addExpense}
-          // category={category}
-          // date={date}
           expenseDetail={expenseDetail}
           setExpenseDetail={setExpenseDetail}
+          handleAddExpense={handleAddExpense}
         />
       </Modal>
     </div>

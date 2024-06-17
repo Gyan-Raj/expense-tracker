@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../button/Button";
 import style from "./Wallet.module.css";
 
@@ -8,6 +8,7 @@ const Wallet = ({
   handleOpenBalanceModal,
   handleOpenExpenseModal,
 }) => {
+  // let [addBalance, seAddBalance]=useState(0)
   console.log(amount);
   console.log(balance);
   return (
