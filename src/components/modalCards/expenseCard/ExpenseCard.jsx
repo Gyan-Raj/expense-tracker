@@ -4,30 +4,29 @@ import Button from "../../button/Button";
 import Input from "../../input/Input";
 
 const ExpenseCard = ({
-  handleCloseExpenseModal,
-  text,
+  isAddExpenseModalOpen,
+  handleCloseAddExpenseModal,
+  handleCloseEditExpenseModal,
   handleAddExpense,
-  expenseDetail,
-  setExpenseDetail,
+  handleEditExpense,
+  handleChange,
+  title,
+  addExpense,
+  category,
+  date,
 }) => {
-  let handleChange = (e) => {
-    let { name, value } = e.target;
-    console.log(name, value);
-    setExpenseDetail((prevDetail) => ({
-      ...prevDetail,
-      [name]: value,
-    }));
-  };
-  let handleSubmit = (e) => {
-    e.preventDefault();
-    handleAddExpense();
-  };
   return (
     <div className={style.container}>
       <div className={style.subContainer}>
-        <form action="" className={style.form} onSubmit={handleSubmit}>
+        <form
+          action=""
+          className={style.form}
+          onSubmit={
+            isAddExpenseModalOpen ? handleAddExpense : handleEditExpense
+          }
+        >
           <div className={style.topContainer}>
-            <h1>{text}</h1>
+            <h1>{isAddExpenseModalOpen ? "Add Expenses" : "Edit Expenses"}</h1>
           </div>
           <div className={style.bottomContainer}>
             <table className={style.table}>
@@ -38,8 +37,9 @@ const ExpenseCard = ({
                       type="text"
                       placeholder="Title"
                       name="title"
-                      value={expenseDetail.title}
+                      value={title}
                       onChange={handleChange}
+                      styles="input"
                     />
                   </td>
                   <td className={style.td}>
@@ -47,8 +47,9 @@ const ExpenseCard = ({
                       type="text"
                       placeholder="Price"
                       name="addExpense"
-                      value={expenseDetail.addExpense}
+                      value={addExpense}
                       onChange={handleChange}
+                      styles="input"
                     />
                   </td>
                 </tr>
@@ -58,7 +59,7 @@ const ExpenseCard = ({
                       name="category"
                       id="category"
                       className={style.select}
-                      value={expenseDetail.category}
+                      value={category}
                       onChange={handleChange}
                       required
                     >
@@ -73,8 +74,9 @@ const ExpenseCard = ({
                       type="date"
                       placeholder="dd/mm/yyyy"
                       name="date"
-                      value={expenseDetail.date}
+                      value={date}
                       onChange={handleChange}
+                      styles="input"
                     />
                   </td>
                 </tr>
@@ -82,14 +84,18 @@ const ExpenseCard = ({
                   <td className={style.td}>
                     <Button
                       type="submit"
-                      children="Add Expense"
+                      children="Add Expenses"
                       style="addButtonYellow"
                     />
                   </td>
                   <td className={style.td}>
                     <Button
                       type="button"
-                      onClick={handleCloseExpenseModal}
+                      onClick={() =>
+                        isAddExpenseModalOpen
+                          ? handleCloseAddExpenseModal()
+                          : handleCloseEditExpenseModal()
+                      }
                       children="Cancel"
                       style="cancelButton"
                     />

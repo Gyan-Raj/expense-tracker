@@ -1,32 +1,35 @@
 import React from "react";
 import style from "./TopContainer.module.css";
 import Wallet from "../walletCard/Wallet";
-import PieChart from "../pieChart/PieChart";
+import Example from "../pieChart/PieChart";
 
 const TopContainer = ({
-  handleOpenBalanceModal,
-  handleCloseBalanceModal,
-  handleOpenExpenseModal,
-  handleCloseExpenseModal,
   walletBalance,
   totalExpense,
+  handleOpenAddBalanceModal,
+  handleOpenAddExpenseModal,
+  data,
 }) => {
   return (
     <div className={style.container}>
       <div className={style.subContainer}>
-        <Wallet
-          amount={walletBalance}
-          balance={true}
-          handleOpenBalanceModal={handleOpenBalanceModal}
-          handleCloseBalanceModal={handleCloseBalanceModal}
-        />
-        <Wallet
-          amount={totalExpense}
-          balance={false}
-          handleOpenExpenseModal={handleOpenExpenseModal}
-          handleCloseExpenseModal={handleCloseExpenseModal}
-        />
-        <PieChart />
+        <div className={style.leftCard}>
+          <Wallet
+            walletBalance={walletBalance}
+            balance={true}
+            handleOpenAddBalanceModal={handleOpenAddBalanceModal}
+          />
+        </div>
+        <div className={style.rightCard}>
+          <Wallet
+            totalExpense={totalExpense}
+            balance={false}
+            handleOpenAddExpenseModal={handleOpenAddExpenseModal}
+          />
+        </div>
+        <div className={style.pieChart}>
+          <Example data={data} />
+        </div>
       </div>
     </div>
   );

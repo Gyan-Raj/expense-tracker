@@ -1,24 +1,14 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import style from "./AddBalanceCard.module.css";
 import Button from "../../button/Button";
 import Input from "../../input/Input";
-// import Balance from "./../balance/Balance";
-// import { expenseTrackerContextProvider } from "../context/ContextProvider";
-// import Button from "../buttons/Button";
 
 const AddBalanceCard = ({
-  handleCloseBalanceModal,
+  handleChange,
+  handleCloseAddBalanceModal,
   addBalance,
   handleAddBalance,
-  setAddBalance,
 }) => {
-  // let [income, setIncome] = useState("");
-
-  const handleChange = (e) => {
-    let { value } = e.target;
-    setAddBalance(value);
-  };
-
   return (
     <div className={style.container}>
       <div className={style.subContainer}>
@@ -35,12 +25,12 @@ const AddBalanceCard = ({
                   name="income"
                   value={addBalance}
                   onChange={handleChange}
+                  styles="input"
                 />
               </div>
               <div className={style.addButtonDiv}>
                 <Button
                   type="submit"
-                  // onClick={handleSubmit}
                   children="Add Balance"
                   style="addButtonYellow"
                 />
@@ -48,7 +38,7 @@ const AddBalanceCard = ({
               <div className={style.cancelButtonDiv}>
                 <Button
                   type="button"
-                  onClick={handleCloseBalanceModal}
+                  onClick={() => handleCloseAddBalanceModal()}
                   children="Cancel"
                   style="cancelButton"
                 />

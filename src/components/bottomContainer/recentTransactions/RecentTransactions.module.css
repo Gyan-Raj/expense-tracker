@@ -1,10 +1,8 @@
 .mainContainer {
-  width: 738.33px;
-  height: 300.03px;
+  /* width: 738.33px; */
   border: 1px 0px 0px 0px;
-  margin-top: 5rem;
 }
-.mainContainer > h1 {
+.title > h1 {
   font-family: Ubuntu;
   font-size: 28px;
   font-style: italic;
@@ -15,65 +13,59 @@
 }
 .container {
   background-color: white;
+  height: 45vh;
   border-radius: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-
-  width: 738.33px;
-  height: 300px;
   border: 1px 0px 0px 0px;
-  /* margin-top: 8rem; */
-}
-.wrapper {
-  width: 100%;
-  height: 3rem;
-  /* top: 94px;
-          left: 32px;
-          gap: 0px; */
-  /* border: 1px 0px 0px 0px; */
-  /* opacity: 0px; */
-  /* background-color: white; */
-  /* border-radius: 0.5rem; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  /* padding: 1rem; */
 }
 .subContainer {
-  width: 100%;
-  height: 100%;
-  /* top: 94px;
-      left: 32px;
-      gap: 0px; */
-  /* border: 1px 0px 0px 0px; */
-  /* opacity: 0px; */
-  /* background-color: white; */
-  /* border-radius: 0.5rem; */
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem;
+  height: 23%;
 }
 .leftSubContainer {
-  display: flex;
+  /* display: flex; */
+  width: 5%;
+}
+.leftSubContainer > div {
+  height: 2rem;
+  width: 2rem;
+  background: rgba(217, 217, 217, 1);
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+.details {
+  width: 70%;
 }
 .rightSubContainer {
   display: flex;
+  width: 20%;
+  justify-content: space-between;
+  align-items: center;
+}
+.rightSubContainer > p {
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21.79px;
+  text-align: left;
+  color: rgba(244, 187, 74, 1);
+}
+.rightSubContainer > button {
+  border: 0;
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  background: rgba(255, 62, 62, 1);
 }
 
-.line {
-  width: 44rem;
-  height: 0px;
-  /* top: 532px;
-      left: 54px;
-      gap: 0px; */
-  border: 1px 0px 0px 0px;
-  /* opacity: 0px; */
-  border: 1px solid rgba(155, 155, 155, 1);
-  /* align-self: center; */
-}
 .buttons {
-  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
+  gap: 1rem;
+  margin: 0.8rem;
 }

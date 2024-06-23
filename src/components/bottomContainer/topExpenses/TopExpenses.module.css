@@ -1,0 +1,23 @@
+.title > h1 {
+  font-family: Ubuntu;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 32.17px;
+  text-align: left;
+  color: white;
+}
+
+.container {
+  background-color: white;
+  height: 45vh;
+  border-radius: 0.5rem;
+  border: 1px 0px 0px 0px;
+  padding: 1rem;
+}
+
+@media (max-width: 767px) {
+  .expenseChart h2 {
+    text-align: center;
+  }
+}

@@ -1,38 +1,42 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "../button/Button";
 import style from "./Wallet.module.css";
 
 const Wallet = ({
-  amount,
+  walletBalance,
+  totalExpense,
   balance,
-  handleOpenBalanceModal,
-  handleOpenExpenseModal,
+  handleOpenAddBalanceModal,
+  handleOpenAddExpenseModal,
 }) => {
-  // let [addBalance, seAddBalance]=useState(0)
-  console.log(amount);
-  console.log(balance);
   return (
     <div className={style.container}>
       <h1 className={style.walletText}>
-        {balance ? "Wallet Balance: " : "Expenses: "}
-        <span className={balance ? style.totalBalance : style.totalExpense}>
-          ₹{amount}
-        </span>
+        {balance ? (
+          <>
+            Wallet Balance:{" "}
+            <span className={style.totalBalance}>₹{walletBalance}</span>
+          </>
+        ) : (
+          <>
+            Expenses:{" "}
+            <span className={style.totalExpense}>₹{totalExpense}</span>
+          </>
+        )}
       </h1>
       {balance ? (
         <Button
-          onClick={handleOpenBalanceModal}
-          // handleCloseBalanceModal={handleCloseBalanceModal}
+          onClick={() => handleOpenAddBalanceModal()}
           children="+ Add Income"
           style="addBalanceGreen"
-          balance
+          balance={true}
         />
       ) : (
         <Button
-          onClick={handleOpenExpenseModal}
+          onClick={() => handleOpenAddExpenseModal()}
           children="+ Add Expense"
           style="addExpenseOrange"
-          balance
+          balance={false}
         />
       )}
     </div>

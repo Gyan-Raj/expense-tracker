@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Input.module.css";
 
-const Input = ({ type, placeholder, name, value, onChange }) => {
+const Input = ({ type, placeholder, name, value, onChange, styles }) => {
   return (
     <input
       type={type}
@@ -10,7 +10,7 @@ const Input = ({ type, placeholder, name, value, onChange }) => {
       name={name}
       value={value}
       onChange={onChange}
-      className={style.input}
+      className={style[styles]}
     />
   );
 };
